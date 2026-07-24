@@ -1,0 +1,27 @@
+[package]
+name = "rsrt"
+version = "0.3.1"
+authors = ["Cesbo Developers <info@cesbo.com>"]
+edition = "2021"
+description = "Pure-Rust implementation of the SRT (Secure Reliable Transport) protocol: live mode with TSBPD, ARQ and HaiCrypt AES-CTR encryption"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/cesbo/rsrt"
+readme = "README.md"
+keywords = ["srt", "streaming", "live", "udp", "mpeg-ts"]
+categories = ["network-programming", "multimedia"]
+
+[dependencies]
+tracing = "0.1"
+tokio = { version = "1.48", features = ["rt", "net", "time", "sync", "macros"] }
+socket2 = "0.6"
+bytes = "1.7"
+aes = { version = "0.9", features = ["zeroize"] }
+ctr = "0.10"
+aes-kw = "0.3"
+pbkdf2 = { version = "0.13", default-features = false, features = ["hmac"] }
+sha1 = "0.11"
+zeroize = { version = "1", features = ["zeroize_derive"] }
+getrandom = "0.4"
+
+[dev-dependencies]
+tokio = { version = "1.48", features = ["rt-multi-thread", "macros", "io-util", "process"] }
